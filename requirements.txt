@@ -1,6 +1,6 @@
 python-telegram-bot
 yfinance
-pandas
+pandas==2.0.3
 pandas_ta
 ccxt
 mplfinance
