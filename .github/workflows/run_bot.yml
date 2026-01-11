@@ -1,0 +1,20 @@
+name: Trading Bot Sinyal
+on:
+  schedule:
+    - cron: '0 * * * *' # Jalan otomatis setiap jam menit ke-0
+  workflow_dispatch: # Bisa dijalankan manual tombol
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Lib
+        run: pip install python-telegram-bot yfinance pandas pandas_ta ccxt mplfinance matplotlib pytz
+      - name: Run Script
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python ai_signal_bot.py
