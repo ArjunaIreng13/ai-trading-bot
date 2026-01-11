@@ -21,10 +21,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy==1.24.3
+          pip install numpy==1.23.5
           pip install pandas==2.0.3
-          # Mengambil pandas_ta langsung dari GitHub untuk menghindari error 'version not found'
-          pip install git+https://github.com/twopirllc/pandas-ta.git@development
+          pip install pandas-ta==0.3.14b0
           pip install python-telegram-bot yfinance ccxt mplfinance matplotlib pytz
 
       - name: Run Trading Bot
