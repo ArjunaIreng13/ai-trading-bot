@@ -2,9 +2,8 @@ name: Trading Bot Sinyal
 
 on:
   schedule:
-    # Berjalan otomatis setiap jam pada menit ke-0
     - cron: '0 * * * *'
-  workflow_dispatch: # Memungkinkan tombol "Run workflow" manual di GitHub
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,19 +16,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10' # Versi paling stabil untuk library trading
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas==2.0.3
           pip install numpy==1.24.3
-          pip install pandas_ta --no-cache-dir
+          pip install pandas==2.0.3
+          # Mengambil pandas_ta langsung dari GitHub untuk menghindari error 'version not found'
+          pip install git+https://github.com/twopirllc/pandas-ta.git@development
           pip install python-telegram-bot yfinance ccxt mplfinance matplotlib pytz
 
       - name: Run Trading Bot
         env:
-          # Mengambil token rahasia dari Settings > Secrets
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python ai_signal_bot.py
