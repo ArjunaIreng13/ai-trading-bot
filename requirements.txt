@@ -1,0 +1,8 @@
+python-telegram-bot
+yfinance
+pandas
+pandas_ta
+ccxt
+mplfinance
+matplotlib
+pytz
