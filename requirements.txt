@@ -1,8 +1,11 @@
-python-telegram-bot
-yfinance
-pandas==2.0.3
+python>=3.10,<3.12
+pandas
+numpy
 pandas_ta
+requests
+python-dotenv
+python-telegram-bot==20.7
 ccxt
-mplfinance
+schedule
+rich
 matplotlib
-pytz
